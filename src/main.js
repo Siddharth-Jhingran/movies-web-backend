@@ -15,6 +15,7 @@ server.use(express.json());
 
 // CORS configuration - allow frontend requests
 const allowedOrigins = [
+  "https://movix-teb2.onrender.com",
   "http://localhost:5173", // Vite default port
   "http://localhost:5174", // Alternative Vite port
   "http://localhost:3000",
