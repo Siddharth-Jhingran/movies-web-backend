@@ -21,7 +21,8 @@ const allowedOrigins = [
   "http://localhost:3000",
 ];
 server.use(cors({
-  origin: "https://movix-teb2.onrender.com"
+  origin: "https://movix-teb2.onrender.com",
+  credentials: true,
 }));
 
 
