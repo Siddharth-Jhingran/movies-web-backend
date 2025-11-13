@@ -20,6 +20,10 @@ const allowedOrigins = [
   "http://localhost:5174", // Alternative Vite port
   "http://localhost:3000",
 ];
+server.use(cors({
+  origin: "https://movix-teb2.onrender.com"
+}));
+
 
 server.use(
   cors({
