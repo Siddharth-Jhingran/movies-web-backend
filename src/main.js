@@ -16,26 +16,23 @@ server.use(express.json());
 // CORS configuration - allow frontend requests
 const allowedOrigins = [
   "https://movix-teb2.onrender.com",
+  "https://movi-x-flame.vercel.app",
   "http://localhost:5173", // Vite default port
   "http://localhost:5174", // Alternative Vite port
   "http://localhost:3000",
 ];
-server.use(cors({
-  origin: "https://movix-teb2.onrender.com",
-  credentials: true,
-}));
 
-
+// Single CORS middleware that checks the allowedOrigins array.
 server.use(
   cors({
     origin: function (origin, callback) {
       // Allow requests with no origin (like mobile apps or curl requests)
       if (!origin) return callback(null, true);
       if (allowedOrigins.indexOf(origin) !== -1) {
-        callback(null, true);
-      } else {
-        callback(null, true); // Allow all origins in development
+        return callback(null, true);
       }
+      // Not allowed
+      return callback(new Error("Not allowed by CORS"));
     },
     methods: ["GET", "POST", "PUT", "DELETE", "PATCH"],
     credentials: true,
